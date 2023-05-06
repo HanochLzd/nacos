@@ -57,6 +57,9 @@ public class PropertiesConstant {
     
     public static final String MYSQL = "mysql";
     
+    // dm db
+    public static final String DM = "dm";
+    
     public static final String EMBEDDED_STORAGE = "embeddedStorage";
     
 }
