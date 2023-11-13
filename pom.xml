@@ -616,6 +616,30 @@
             <artifactId>mockito-inline</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.apusic</groupId>
+            <artifactId>aams-spring-boot-starter</artifactId>
+            <version>2.1.7.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.apusic.ams.embed</groupId>
+            <artifactId>aas-embed-jasper</artifactId>
+            <version>10.1</version>
+        </dependency>
+
+        <!--            排除tomcat的jar修改类似如下：-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         
     </dependencies>
     
@@ -631,7 +655,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            
+
             <!-- Internal libs -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
