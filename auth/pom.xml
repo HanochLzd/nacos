@@ -56,9 +56,11 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
+            <groupId>com.apusic.ams.embed</groupId>
+            <artifactId>aas-embed-jasper</artifactId>
+            <version>10.1</version>
         </dependency>
+
     </dependencies>
     
     <build>

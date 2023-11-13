@@ -629,7 +629,37 @@
             <version>10.1</version>
         </dependency>
 
-        <!--            排除tomcat的jar修改类似如下：-->
+        <dependency>
+            <groupId>com.apusic.ams.embed</groupId>
+            <artifactId>aas-embed-el</artifactId>
+            <version>10.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.apusic.ams.embed</groupId>
+            <artifactId>aas-embed-core</artifactId>
+            <version>10.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.apusic.ams.embed</groupId>
+            <artifactId>aas-dbcp</artifactId>
+            <version>10.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.apusic.ams.embed</groupId>
+            <artifactId>aas-util</artifactId>
+            <version>10.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.apusic.ams.embed</groupId>
+            <artifactId>aas-embed-websocket</artifactId>
+            <version>10.1</version>
+        </dependency>
+
+        <!--排除tomcat的jar修改类似如下：-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
