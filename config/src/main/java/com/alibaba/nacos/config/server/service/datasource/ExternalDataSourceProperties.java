@@ -14,6 +14,8 @@
 package com.alibaba.nacos.config.server.service.datasource;
 
 import com.alibaba.nacos.common.utils.Preconditions;
+import com.alibaba.nacos.config.server.constant.PropertiesConstant;
+import com.alibaba.nacos.sys.env.EnvUtil;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.boot.context.properties.bind.Bindable;
@@ -22,6 +24,7 @@ import org.springframework.core.env.Environment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import static com.alibaba.nacos.common.utils.CollectionUtils.getOrDefault;
@@ -34,6 +37,12 @@ import static com.alibaba.nacos.common.utils.CollectionUtils.getOrDefault;
 public class ExternalDataSourceProperties {
     
     private static final String JDBC_DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
+    
+    //DM driver
+    private static final String DM_JDBC_DRIVER_NAME = "dm.jdbc.driver.DmDriver";
+    
+    private static final Map<String, String> JDBC_DRIVER_MAP = Map.of(PropertiesConstant.MYSQL, JDBC_DRIVER_NAME,
+            PropertiesConstant.DM, DM_JDBC_DRIVER_NAME);
     
     private static final String TEST_QUERY = "SELECT 1";
     
@@ -78,7 +87,9 @@ public class ExternalDataSourceProperties {
             int currentSize = index + 1;
             Preconditions.checkArgument(url.size() >= currentSize, "db.url.%s is null", index);
             DataSourcePoolProperties poolProperties = DataSourcePoolProperties.build(environment);
-            poolProperties.setDriverClassName(JDBC_DRIVER_NAME);
+            poolProperties.setDriverClassName(
+                    JDBC_DRIVER_MAP.getOrDefault(EnvUtil.getProperty(PropertiesConstant.SPRING_DATASOURCE_PLATFORM),
+                            JDBC_DRIVER_NAME));
             poolProperties.setJdbcUrl(url.get(index).trim());
             poolProperties.setUsername(getOrDefault(user, index, user.get(0)).trim());
             poolProperties.setPassword(getOrDefault(password, index, password.get(0)).trim());
